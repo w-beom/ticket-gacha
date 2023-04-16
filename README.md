@@ -9,7 +9,8 @@
 # 이렇게 개발했어요
 
 ## Git-flow 사용
-![git-flow](.assets/git-flow.png)
+![git-flow](.assets/git-flow.png){: width="50%" height="50%"}
+
 - 저희는 Git-flow 전략에서 master, develop, feature 브랜치를 통한 전략을 가져가기로 했습니다.
 - github Issues에 먼저 개발할 기능을 등록한 후 해당 이슈 번호로 feature 브랜치를 생성합니다.
 - 기능을 모두 개발하면 develop 브랜치에 PR을 생성한 뒤 팀원의 코드리뷰를 받고 merge를 진행합니다.
