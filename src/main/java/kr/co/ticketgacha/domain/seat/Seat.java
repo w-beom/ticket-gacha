@@ -1,16 +1,21 @@
-package kr.co.ticketgacha.domain;
+package kr.co.ticketgacha.domain.seat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import kr.co.ticketgacha.domain.Auditorium;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 public class Seat {
-
     @Id
     private Long seatId;
     @ManyToOne
@@ -21,9 +26,15 @@ public class Seat {
     @Column
     private String col;
     @Column
-    private String status;
+    private Status status;
     @Column
+    @CreatedDate
     private LocalDateTime createdAt;
     @Column
+    @LastModifiedDate
     private LocalDateTime updatedAt;
+
+    public void used() {
+        this.status = Status.USED;
+    }
 }
