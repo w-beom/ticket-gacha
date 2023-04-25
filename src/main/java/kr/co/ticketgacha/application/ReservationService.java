@@ -10,7 +10,7 @@ import kr.co.ticketgacha.domain.seat.SeatRepository;
 import kr.co.ticketgacha.domain.reservation.Reservation;
 import kr.co.ticketgacha.domain.reservation.ReservationRepository;
 import kr.co.ticketgacha.presentation.dto.CreateReservationRequest;
-import kr.co.ticketgacha.presentation.exception.MemberNotFoundException;
+
 import kr.co.ticketgacha.presentation.exception.PerformanceNotFoundException;
 import kr.co.ticketgacha.presentation.exception.SeatNotFoundException;
 import lombok.RequiredArgsConstructor;
