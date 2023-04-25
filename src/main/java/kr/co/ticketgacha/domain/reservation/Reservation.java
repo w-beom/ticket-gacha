@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import kr.co.ticketgacha.domain.Member;
-import kr.co.ticketgacha.domain.performacne.Performance;
+import kr.co.ticketgacha.domain.performance.Performance;
 import kr.co.ticketgacha.domain.seat.Seat;
 import lombok.AccessLevel;
 import lombok.Builder;

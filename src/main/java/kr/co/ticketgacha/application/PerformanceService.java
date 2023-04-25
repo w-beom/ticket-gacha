@@ -2,8 +2,8 @@ package kr.co.ticketgacha.application;
 
 import kr.co.ticketgacha.domain.auditorium.Auditorium;
 import kr.co.ticketgacha.domain.auditorium.AuditoriumRepository;
-import kr.co.ticketgacha.domain.performacne.Performance;
-import kr.co.ticketgacha.domain.performacne.PerformanceRepository;
+import kr.co.ticketgacha.domain.performance.Performance;
+import kr.co.ticketgacha.domain.performance.PerformanceRepository;
 import kr.co.ticketgacha.presentation.dto.CreatePerformanceRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

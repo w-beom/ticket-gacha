@@ -1,4 +1,4 @@
-package kr.co.ticketgacha.domain.performacne;
+package kr.co.ticketgacha.domain.performance;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

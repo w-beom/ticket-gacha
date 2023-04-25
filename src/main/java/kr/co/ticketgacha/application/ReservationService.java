@@ -2,8 +2,8 @@ package kr.co.ticketgacha.application;
 
 import kr.co.ticketgacha.domain.Member;
 import kr.co.ticketgacha.domain.MemberRepository;
-import kr.co.ticketgacha.domain.performacne.Performance;
-import kr.co.ticketgacha.domain.performacne.PerformanceRepository;
+import kr.co.ticketgacha.domain.performance.Performance;
+import kr.co.ticketgacha.domain.performance.PerformanceRepository;
 import kr.co.ticketgacha.domain.reservation.Status;
 import kr.co.ticketgacha.domain.seat.Seat;
 import kr.co.ticketgacha.domain.seat.SeatRepository;

@@ -1,4 +1,4 @@
-package kr.co.ticketgacha.domain.performacne;
+package kr.co.ticketgacha.domain.performance;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
