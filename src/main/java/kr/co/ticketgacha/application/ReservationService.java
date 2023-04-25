@@ -2,8 +2,8 @@ package kr.co.ticketgacha.application;
 
 import kr.co.ticketgacha.domain.Member;
 import kr.co.ticketgacha.domain.MemberRepository;
-import kr.co.ticketgacha.domain.Performance;
-import kr.co.ticketgacha.domain.PerformanceRepository;
+import kr.co.ticketgacha.domain.performance.Performance;
+import kr.co.ticketgacha.domain.performance.PerformanceRepository;
 import kr.co.ticketgacha.domain.reservation.Status;
 import kr.co.ticketgacha.domain.seat.Seat;
 import kr.co.ticketgacha.domain.seat.SeatRepository;
@@ -11,6 +11,7 @@ import kr.co.ticketgacha.domain.reservation.Reservation;
 import kr.co.ticketgacha.domain.reservation.ReservationRepository;
 import kr.co.ticketgacha.presentation.dto.CreateReservationRequest;
 
+import kr.co.ticketgacha.presentation.exception.MemberNotFoundException;
 import kr.co.ticketgacha.presentation.exception.PerformanceNotFoundException;
 import kr.co.ticketgacha.presentation.exception.SeatNotFoundException;
 import lombok.RequiredArgsConstructor;
