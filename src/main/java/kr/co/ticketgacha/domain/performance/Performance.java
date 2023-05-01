@@ -9,17 +9,21 @@ import jakarta.persistence.ManyToOne;
 import kr.co.ticketgacha.domain.auditorium.Auditorium;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Performance {
     @Id
     @GeneratedValue
+    @Setter
     private Long performanceId;
     @ManyToOne
     @JoinColumn(name = "AUDITORIUM_ID")

@@ -22,10 +22,8 @@ public class MemberService {
                 .email(createMemberRequest.getEmail())
                 .name(createMemberRequest.getName())
                 .phone(createMemberRequest.getPhone())
-                .baned(false)
+                .banned(false)
                 .admin(false)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
                 .build();
 
         memberRepository.save(member);
