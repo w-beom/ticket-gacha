@@ -1,6 +1,7 @@
 package kr.co.ticketgacha.presentation.dto;
 
 import jakarta.annotation.Nonnull;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -15,4 +16,12 @@ public class CreateReservationRequest {
     private Long seatId;
     @Nonnull
     private LocalDateTime reservationDate;
+
+    @Builder
+    public CreateReservationRequest(Long performanceId, Long memberId, Long seatId, LocalDateTime reservationDate) {
+        this.performanceId = performanceId;
+        this.memberId = memberId;
+        this.seatId = seatId;
+        this.reservationDate = reservationDate;
+    }
 }
