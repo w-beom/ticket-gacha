@@ -1,9 +1,11 @@
 spring:
+  profiles:
+    active: db
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url:
-    username:
-    password:
+    driver-class-name: ${driver-class-name}
+    url: ${url}
+    username: ${adminname}
+    password: ${password}
   jpa:
     show-sql: true
     properties:
