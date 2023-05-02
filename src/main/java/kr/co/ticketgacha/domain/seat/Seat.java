@@ -6,7 +6,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import kr.co.ticketgacha.domain.auditorium.Auditorium;
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -14,6 +17,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Seat {
     @Id
     private Long seatId;
@@ -32,6 +36,14 @@ public class Seat {
     @Column
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
+    @Builder
+    public Seat(Auditorium auditorium, String row, String col, Status status) {
+        this.auditorium = auditorium;
+        this.row = row;
+        this.col = col;
+        this.status = status;
+    }
 
     public void used() {
         this.status = Status.USED;
