@@ -23,7 +23,7 @@ public class AuditoriumTest {
     }
 
     @Test
-    public void 공연장_생성_삭제(){
+    public void 공연장_생성_조회(){
 
         // given
         String name = "테스트공연";

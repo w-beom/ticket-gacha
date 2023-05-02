@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: 
-    username:
-    password:
+    url: jdbc:mysql://database-1.cm0ukadjuhtr.ap-northeast-2.rds.amazonaws.com:3306/ticket_gacha
+    username: root
+    password: hongchae
   jpa:
     show-sql: true
     properties:
