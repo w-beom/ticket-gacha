@@ -4,7 +4,7 @@ import kr.co.ticketgacha.domain.auditorium.Auditorium;
 import kr.co.ticketgacha.domain.auditorium.AuditoriumRepository;
 import kr.co.ticketgacha.domain.seat.Seat;
 import kr.co.ticketgacha.domain.seat.SeatRepository;
-import kr.co.ticketgacha.presentation.dto.CreateSeatRequest;
+import kr.co.ticketgacha.presentation.dto.request.CreateSeatRequest;
 import kr.co.ticketgacha.presentation.exception.AuditoriumNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class SeatService {
                 .auditorium(auditorium)
                 .col(createSeatRequest.getCol())
                 .row(createSeatRequest.getRow())
-                .status(createSeatRequest.getStatus())
+                .seatStatus(createSeatRequest.getSeatStatus())
                 .build();
 
         seatRepository.save(seat);

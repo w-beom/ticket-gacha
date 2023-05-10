@@ -29,7 +29,7 @@ public class Seat {
     @Column
     private String col;
     @Column
-    private Status status;
+    private SeatStatus seatStatus;
     @Column
     @CreatedDate
     private LocalDateTime createdAt;
@@ -38,14 +38,22 @@ public class Seat {
     private LocalDateTime updatedAt;
 
     @Builder
-    public Seat(Auditorium auditorium, String row, String col, Status status) {
+    public Seat(Auditorium auditorium, String row, String col, SeatStatus seatStatus) {
         this.auditorium = auditorium;
         this.row = row;
         this.col = col;
-        this.status = status;
+        this.seatStatus = seatStatus;
+    }
+
+    public boolean isUsed() {
+        return this.seatStatus == SeatStatus.USED;
     }
 
     public void used() {
-        this.status = Status.USED;
+        this.seatStatus = SeatStatus.USED;
+    }
+
+    public void unUsed() {
+        this.seatStatus = SeatStatus.UNUSED;
     }
 }

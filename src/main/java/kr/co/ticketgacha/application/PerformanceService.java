@@ -4,7 +4,7 @@ import kr.co.ticketgacha.domain.auditorium.Auditorium;
 import kr.co.ticketgacha.domain.auditorium.AuditoriumRepository;
 import kr.co.ticketgacha.domain.performance.Performance;
 import kr.co.ticketgacha.domain.performance.PerformanceRepository;
-import kr.co.ticketgacha.presentation.dto.CreatePerformanceRequest;
+import kr.co.ticketgacha.presentation.dto.request.CreatePerformanceRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

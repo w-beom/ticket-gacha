@@ -1,7 +1,7 @@
 package kr.co.ticketgacha.presentation.api;
 
 import kr.co.ticketgacha.application.PerformanceService;
-import kr.co.ticketgacha.presentation.dto.CreatePerformanceRequest;
+import kr.co.ticketgacha.presentation.dto.request.CreatePerformanceRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,7 +1,7 @@
 package kr.co.ticketgacha.presentation.api;
 
 import kr.co.ticketgacha.application.SeatService;
-import kr.co.ticketgacha.presentation.dto.CreateSeatRequest;
+import kr.co.ticketgacha.presentation.dto.request.CreateSeatRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
