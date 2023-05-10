@@ -2,12 +2,10 @@ package kr.co.ticketgacha.application;
 
 import kr.co.ticketgacha.domain.Member;
 import kr.co.ticketgacha.domain.MemberRepository;
-import kr.co.ticketgacha.presentation.dto.CreateMemberRequest;
+import kr.co.ticketgacha.presentation.dto.request.CreateMemberRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor

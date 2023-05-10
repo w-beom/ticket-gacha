@@ -1,4 +1,4 @@
-package kr.co.ticketgacha.presentation.dto;
+package kr.co.ticketgacha.presentation.dto.request;
 
 import jakarta.annotation.Nonnull;
 import lombok.Builder;

@@ -2,7 +2,7 @@ package kr.co.ticketgacha.presentation.api;
 
 import jakarta.validation.Valid;
 import kr.co.ticketgacha.application.MemberService;
-import kr.co.ticketgacha.presentation.dto.CreateMemberRequest;
+import kr.co.ticketgacha.presentation.dto.request.CreateMemberRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,6 +1,6 @@
-package kr.co.ticketgacha.presentation.dto;
+package kr.co.ticketgacha.presentation.dto.request;
 
-import kr.co.ticketgacha.domain.seat.Status;
+import kr.co.ticketgacha.domain.seat.SeatStatus;
 import lombok.Getter;
 
 @Getter
@@ -8,5 +8,5 @@ public class CreateSeatRequest {
     private Long auditoriumId;
     private String row;
     private String col;
-    private Status status;
+    private SeatStatus seatStatus;
 }

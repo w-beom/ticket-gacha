@@ -4,14 +4,19 @@ import kr.co.ticketgacha.domain.Member;
 import kr.co.ticketgacha.domain.MemberRepository;
 import kr.co.ticketgacha.domain.performance.Performance;
 import kr.co.ticketgacha.domain.performance.PerformanceRepository;
-import kr.co.ticketgacha.domain.reservation.Status;
+import kr.co.ticketgacha.domain.reservation.ReservationStatus;
 import kr.co.ticketgacha.domain.seat.Seat;
 import kr.co.ticketgacha.domain.seat.SeatRepository;
 import kr.co.ticketgacha.domain.reservation.Reservation;
 import kr.co.ticketgacha.domain.reservation.ReservationRepository;
-import kr.co.ticketgacha.presentation.dto.CreateReservationRequest;
+import kr.co.ticketgacha.presentation.dto.request.CreateReservationRequest;
+import kr.co.ticketgacha.presentation.dto.response.PerformanceResponse;
+import kr.co.ticketgacha.presentation.dto.response.ReservationResponse;
+import kr.co.ticketgacha.presentation.dto.response.SeatResponse;
 import kr.co.ticketgacha.presentation.exception.MemberNotFoundException;
 import kr.co.ticketgacha.presentation.exception.PerformanceNotFoundException;
+import kr.co.ticketgacha.presentation.exception.ReservationNotFoundException;
+import kr.co.ticketgacha.presentation.exception.SeatAlreadyReservedException;
 import kr.co.ticketgacha.presentation.exception.SeatNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,11 +41,15 @@ public class ReservationService {
         Seat seat = seatRepository.findById(requestDto.getSeatId())
                 .orElseThrow(SeatNotFoundException::new);
 
+        if (seat.isUsed()) {
+            throw new SeatAlreadyReservedException();
+        }
+
         Reservation reservation = Reservation.builder()
                 .member(member)
                 .reservationDate(requestDto.getReservationDate())
                 .seat(seat)
-                .status(Status.WAITING)
+                .reservationStatus(ReservationStatus.WAITING)
                 .performance(performance)
                 .build();
 
@@ -48,6 +57,47 @@ public class ReservationService {
 
         // 좌석을 사용한상태로 수정한다.
         seat.used();
+        seatRepository.save(seat);
+    }
+
+    public ReservationResponse findReservation(Long id) {
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(ReservationNotFoundException::new);
+
+        Performance performance = reservation.getPerformance();
+        Seat seat = reservation.getSeat();
+
+        return ReservationResponse.builder()
+                .reservationId(reservation.getReservationId())
+                .memberId(reservation.getMember().getMemberId())
+                .reservationDate(reservation.getReservationDate())
+                .performance(PerformanceResponse.builder()
+                        .performanceId(performance.getPerformanceId())
+                        .performanceName(performance.getName())
+                        .deleted(performance.isDeleted())
+                        .startDate(performance.getStart())
+                        .endDate(performance.getEnd())
+                        .build())
+                .seat(SeatResponse.builder()
+                        .seatId(seat.getSeatId())
+                        .row(seat.getRow())
+                        .col(seat.getCol())
+                        .seatStatus(seat.getSeatStatus())
+                        .build())
+                .build();
+    }
+
+    @Transactional
+    public void cancelReservation(Long id) {
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(ReservationNotFoundException::new);
+
+        Seat seat = reservation.getSeat();
+
+        reservation.cancel();
+        reservationRepository.save(reservation);
+
+        seat.unUsed();
         seatRepository.save(seat);
     }
 }
