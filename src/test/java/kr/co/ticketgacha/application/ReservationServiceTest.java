@@ -12,9 +12,7 @@ import kr.co.ticketgacha.infrastructure.FakePerformanceRepository;
 import kr.co.ticketgacha.infrastructure.FakeReservationRepository;
 import kr.co.ticketgacha.infrastructure.FakeSeatRepository;
 import kr.co.ticketgacha.presentation.dto.request.CreateReservationRequest;
-import kr.co.ticketgacha.presentation.exception.MemberNotFoundException;
-import kr.co.ticketgacha.presentation.exception.PerformanceNotFoundException;
-import kr.co.ticketgacha.presentation.exception.SeatNotFoundException;
+import kr.co.ticketgacha.presentation.exception.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,7 +44,7 @@ class ReservationServiceTest {
                 .reservationDate(LocalDateTime.now())
                 .build();
 
-        assertThrowsExactly(MemberNotFoundException.class, () -> reservationService.reservation(request));
+        assertThrowsExactly(EntityNotFoundException.class, () -> reservationService.reservation(request));
     }
 
     @Test
@@ -71,7 +69,7 @@ class ReservationServiceTest {
                 .reservationDate(LocalDateTime.now())
                 .build();
 
-        assertThrowsExactly(PerformanceNotFoundException.class, () -> reservationService.reservation(request));
+        assertThrowsExactly(EntityNotFoundException.class, () -> reservationService.reservation(request));
     }
 
     @Test
@@ -103,6 +101,6 @@ class ReservationServiceTest {
                 .reservationDate(LocalDateTime.now())
                 .build();
 
-        assertThrowsExactly(SeatNotFoundException.class, () -> reservationService.reservation(request));
+        assertThrowsExactly(EntityNotFoundException.class, () -> reservationService.reservation(request));
     }
 }
