@@ -4,20 +4,17 @@ import kr.co.ticketgacha.domain.Member;
 import kr.co.ticketgacha.domain.MemberRepository;
 import kr.co.ticketgacha.domain.performance.Performance;
 import kr.co.ticketgacha.domain.performance.PerformanceRepository;
+import kr.co.ticketgacha.domain.reservation.Reservation;
+import kr.co.ticketgacha.domain.reservation.ReservationRepository;
 import kr.co.ticketgacha.domain.reservation.ReservationStatus;
 import kr.co.ticketgacha.domain.seat.Seat;
 import kr.co.ticketgacha.domain.seat.SeatRepository;
-import kr.co.ticketgacha.domain.reservation.Reservation;
-import kr.co.ticketgacha.domain.reservation.ReservationRepository;
 import kr.co.ticketgacha.presentation.dto.request.CreateReservationRequest;
 import kr.co.ticketgacha.presentation.dto.response.PerformanceResponse;
 import kr.co.ticketgacha.presentation.dto.response.ReservationResponse;
 import kr.co.ticketgacha.presentation.dto.response.SeatResponse;
-import kr.co.ticketgacha.presentation.exception.MemberNotFoundException;
-import kr.co.ticketgacha.presentation.exception.PerformanceNotFoundException;
-import kr.co.ticketgacha.presentation.exception.ReservationNotFoundException;
+import kr.co.ticketgacha.presentation.exception.EntityNotFoundException;
 import kr.co.ticketgacha.presentation.exception.SeatAlreadyReservedException;
-import kr.co.ticketgacha.presentation.exception.SeatNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,13 +30,13 @@ public class ReservationService {
     @Transactional
     public void reservation(CreateReservationRequest requestDto) {
         Member member = memberRepository.findById(requestDto.getMemberId())
-                .orElseThrow(MemberNotFoundException::new);
+                .orElseThrow(EntityNotFoundException::new);
 
         Performance performance = performanceRepository.findById(requestDto.getPerformanceId())
-                .orElseThrow(PerformanceNotFoundException::new);
+                .orElseThrow(EntityNotFoundException::new);
 
         Seat seat = seatRepository.findById(requestDto.getSeatId())
-                .orElseThrow(SeatNotFoundException::new);
+                .orElseThrow(EntityNotFoundException::new);
 
         if (seat.isUsed()) {
             throw new SeatAlreadyReservedException();
@@ -62,7 +59,7 @@ public class ReservationService {
 
     public ReservationResponse findReservation(Long id) {
         Reservation reservation = reservationRepository.findById(id)
-                .orElseThrow(ReservationNotFoundException::new);
+                .orElseThrow(EntityNotFoundException::new);
 
         Performance performance = reservation.getPerformance();
         Seat seat = reservation.getSeat();
@@ -90,7 +87,7 @@ public class ReservationService {
     @Transactional
     public void cancelReservation(Long id) {
         Reservation reservation = reservationRepository.findById(id)
-                .orElseThrow(ReservationNotFoundException::new);
+                .orElseThrow(EntityNotFoundException::new);
 
         Seat seat = reservation.getSeat();
 

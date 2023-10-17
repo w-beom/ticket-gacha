@@ -2,7 +2,6 @@ package kr.co.ticketgacha.presentation.api;
 
 import jakarta.validation.Valid;
 import kr.co.ticketgacha.application.ReservationService;
-import kr.co.ticketgacha.domain.reservation.Reservation;
 import kr.co.ticketgacha.presentation.dto.request.CreateReservationRequest;
 import kr.co.ticketgacha.presentation.dto.response.ReservationResponse;
 import lombok.RequiredArgsConstructor;

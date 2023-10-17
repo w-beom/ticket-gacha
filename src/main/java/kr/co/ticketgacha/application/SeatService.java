@@ -5,7 +5,7 @@ import kr.co.ticketgacha.domain.auditorium.AuditoriumRepository;
 import kr.co.ticketgacha.domain.seat.Seat;
 import kr.co.ticketgacha.domain.seat.SeatRepository;
 import kr.co.ticketgacha.presentation.dto.request.CreateSeatRequest;
-import kr.co.ticketgacha.presentation.exception.AuditoriumNotFoundException;
+import kr.co.ticketgacha.presentation.exception.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +19,7 @@ public class SeatService {
     @Transactional
     public void createSeat(CreateSeatRequest createSeatRequest) {
         Auditorium auditorium = auditoriumRepository.findById(createSeatRequest.getAuditoriumId())
-                .orElseThrow(AuditoriumNotFoundException::new);
+                .orElseThrow(EntityNotFoundException::new);
 
         Seat seat = Seat.builder()
                 .auditorium(auditorium)
